@@ -36,67 +36,64 @@ namespace Combat
         public int armor
         {
             get { return m_Armor; }
-            set { Publisher.self.Broadcast("Unit Armor Changed", this); m_Armor = value; }
+            set { m_Armor = value; Publisher.self.Broadcast("Unit Armor Changed", this); }
         }
 
         public StatType<int> attack
         {
             get { return m_Attack; }
-            set { Publisher.self.Broadcast("Unit Attack Changed", this); m_Attack = value; }
+            set { m_Attack = value; Publisher.self.Broadcast("Unit Attack Changed", this); }
         }
 
         public StatType<int> defense
         {
             get { return m_Defense; }
-            set { throw new NotImplementedException(); }
+            set { m_Defense = value; Publisher.self.Broadcast("Unit Defense Changed", this); }
         }
 
         public int health
         {
             get { return m_Health; }
-            set { Publisher.self.Broadcast("Unit Health Changed", this); m_Health = value; }
+            set { m_Health = value; Publisher.self.Broadcast("Unit Health Changed", this); }
         }
 
         public int speed
         {
             get { return m_Speed; }
-            set { throw new NotImplementedException(); }
+            set { m_Speed = value; Publisher.self.Broadcast("Unit Speed Changed", this); }
         }
 
         public int maxHealth
         {
             get { return m_MaxHealth; }
-            set { throw new NotImplementedException(); }
+            set { m_MaxHealth = value; Publisher.self.Broadcast("Unit MaxHealth Changed", this); }
         }
 
         public int maxArmor
         {
             get { return m_MaxArmor; }
-            set { throw new NotImplementedException(); }
+            set { m_MaxArmor = value; Publisher.self.Broadcast("Unit MaxArmor Changed", this); }
         }
 
         public int maxSpeed
         {
             get { return m_MaxSpeed; }
-            set { throw new NotImplementedException(); }
+            set { m_MaxSpeed = value; Publisher.self.Broadcast("Unit MaxSpeed Changed", this); }
         }
 
         public StatType<int> maxAttack
         {
             get { return m_MaxAttack; }
-            set { throw new NotImplementedException(); }
+            set { m_MaxAttack = value; Publisher.self.Broadcast("Unit MaxAttack Changed", this); }
         }
 
         public StatType<int> maxDefense
         {
             get { return m_MaxDefense; }
-            set { throw new NotImplementedException(); }
+            set { m_MaxDefense = value; Publisher.self.Broadcast("Unit MaxDefense Changed", this); }
         }
 
-        protected Unit()
-        {
-
-        }
+        protected Unit() { }    // No default constructor available
 
         public Unit(int a_Health, int a_Armor, int a_Speed, StatType<int> a_Attack, StatType<int> a_Defense)
         {

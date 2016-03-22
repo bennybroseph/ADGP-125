@@ -82,67 +82,83 @@
             // 
             // playerMove1
             // 
+            this.playerMove1.Enabled = false;
             this.playerMove1.Location = new System.Drawing.Point(12, 176);
             this.playerMove1.Name = "playerMove1";
             this.playerMove1.ReadOnly = true;
             this.playerMove1.Size = new System.Drawing.Size(100, 20);
             this.playerMove1.TabIndex = 3;
+            this.playerMove1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // playerMove2
             // 
+            this.playerMove2.Enabled = false;
             this.playerMove2.Location = new System.Drawing.Point(12, 202);
             this.playerMove2.Name = "playerMove2";
             this.playerMove2.ReadOnly = true;
             this.playerMove2.Size = new System.Drawing.Size(100, 20);
             this.playerMove2.TabIndex = 4;
+            this.playerMove2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // playerMove3
             // 
+            this.playerMove3.Enabled = false;
             this.playerMove3.Location = new System.Drawing.Point(12, 228);
             this.playerMove3.Name = "playerMove3";
             this.playerMove3.ReadOnly = true;
             this.playerMove3.Size = new System.Drawing.Size(100, 20);
             this.playerMove3.TabIndex = 5;
+            this.playerMove3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // playerMove4
             // 
+            this.playerMove4.Enabled = false;
             this.playerMove4.Location = new System.Drawing.Point(12, 254);
             this.playerMove4.Name = "playerMove4";
             this.playerMove4.ReadOnly = true;
             this.playerMove4.Size = new System.Drawing.Size(100, 20);
             this.playerMove4.TabIndex = 6;
+            this.playerMove4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // enemyMove4
             // 
+            this.enemyMove4.Enabled = false;
             this.enemyMove4.Location = new System.Drawing.Point(534, 254);
             this.enemyMove4.Name = "enemyMove4";
             this.enemyMove4.ReadOnly = true;
             this.enemyMove4.Size = new System.Drawing.Size(100, 20);
             this.enemyMove4.TabIndex = 11;
+            this.enemyMove4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // enemyMove3
             // 
+            this.enemyMove3.Enabled = false;
             this.enemyMove3.Location = new System.Drawing.Point(534, 228);
             this.enemyMove3.Name = "enemyMove3";
             this.enemyMove3.ReadOnly = true;
             this.enemyMove3.Size = new System.Drawing.Size(100, 20);
             this.enemyMove3.TabIndex = 10;
+            this.enemyMove3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // enemyMove2
             // 
+            this.enemyMove2.Enabled = false;
             this.enemyMove2.Location = new System.Drawing.Point(534, 202);
             this.enemyMove2.Name = "enemyMove2";
             this.enemyMove2.ReadOnly = true;
             this.enemyMove2.Size = new System.Drawing.Size(100, 20);
             this.enemyMove2.TabIndex = 9;
+            this.enemyMove2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // enemyMove1
             // 
+            this.enemyMove1.Enabled = false;
             this.enemyMove1.Location = new System.Drawing.Point(534, 176);
             this.enemyMove1.Name = "enemyMove1";
             this.enemyMove1.ReadOnly = true;
             this.enemyMove1.Size = new System.Drawing.Size(100, 20);
             this.enemyMove1.TabIndex = 8;
+            this.enemyMove1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // playerButtonMove2
             // 
@@ -187,6 +203,7 @@
             // 
             // enemyStats
             // 
+            this.enemyStats.Enabled = false;
             this.enemyStats.Location = new System.Drawing.Point(340, 12);
             this.enemyStats.Multiline = true;
             this.enemyStats.Name = "enemyStats";
@@ -196,6 +213,7 @@
             // 
             // playerStats
             // 
+            this.playerStats.Enabled = false;
             this.playerStats.Location = new System.Drawing.Point(206, 12);
             this.playerStats.Multiline = true;
             this.playerStats.Name = "playerStats";
