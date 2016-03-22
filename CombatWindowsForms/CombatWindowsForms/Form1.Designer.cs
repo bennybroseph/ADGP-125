@@ -64,7 +64,7 @@
             // enemySprite
             // 
             this.enemySprite.Image = ((System.Drawing.Image)(resources.GetObject("enemySprite.Image")));
-            this.enemySprite.Location = new System.Drawing.Point(446, 12);
+            this.enemySprite.Location = new System.Drawing.Point(517, 12);
             this.enemySprite.Name = "enemySprite";
             this.enemySprite.Size = new System.Drawing.Size(188, 129);
             this.enemySprite.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -73,9 +73,9 @@
             // 
             // playerButtonMove1
             // 
-            this.playerButtonMove1.Location = new System.Drawing.Point(118, 176);
+            this.playerButtonMove1.Location = new System.Drawing.Point(206, 173);
             this.playerButtonMove1.Name = "playerButtonMove1";
-            this.playerButtonMove1.Size = new System.Drawing.Size(82, 23);
+            this.playerButtonMove1.Size = new System.Drawing.Size(100, 23);
             this.playerButtonMove1.TabIndex = 2;
             this.playerButtonMove1.Text = "button1";
             this.playerButtonMove1.UseVisualStyleBackColor = true;
@@ -86,7 +86,7 @@
             this.playerMove1.Location = new System.Drawing.Point(12, 176);
             this.playerMove1.Name = "playerMove1";
             this.playerMove1.ReadOnly = true;
-            this.playerMove1.Size = new System.Drawing.Size(100, 20);
+            this.playerMove1.Size = new System.Drawing.Size(188, 20);
             this.playerMove1.TabIndex = 3;
             this.playerMove1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -96,7 +96,7 @@
             this.playerMove2.Location = new System.Drawing.Point(12, 202);
             this.playerMove2.Name = "playerMove2";
             this.playerMove2.ReadOnly = true;
-            this.playerMove2.Size = new System.Drawing.Size(100, 20);
+            this.playerMove2.Size = new System.Drawing.Size(188, 20);
             this.playerMove2.TabIndex = 4;
             this.playerMove2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -106,7 +106,7 @@
             this.playerMove3.Location = new System.Drawing.Point(12, 228);
             this.playerMove3.Name = "playerMove3";
             this.playerMove3.ReadOnly = true;
-            this.playerMove3.Size = new System.Drawing.Size(100, 20);
+            this.playerMove3.Size = new System.Drawing.Size(188, 20);
             this.playerMove3.TabIndex = 5;
             this.playerMove3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -116,64 +116,64 @@
             this.playerMove4.Location = new System.Drawing.Point(12, 254);
             this.playerMove4.Name = "playerMove4";
             this.playerMove4.ReadOnly = true;
-            this.playerMove4.Size = new System.Drawing.Size(100, 20);
+            this.playerMove4.Size = new System.Drawing.Size(188, 20);
             this.playerMove4.TabIndex = 6;
             this.playerMove4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // enemyMove4
             // 
             this.enemyMove4.Enabled = false;
-            this.enemyMove4.Location = new System.Drawing.Point(534, 254);
+            this.enemyMove4.Location = new System.Drawing.Point(517, 254);
             this.enemyMove4.Name = "enemyMove4";
             this.enemyMove4.ReadOnly = true;
-            this.enemyMove4.Size = new System.Drawing.Size(100, 20);
+            this.enemyMove4.Size = new System.Drawing.Size(188, 20);
             this.enemyMove4.TabIndex = 11;
             this.enemyMove4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // enemyMove3
             // 
             this.enemyMove3.Enabled = false;
-            this.enemyMove3.Location = new System.Drawing.Point(534, 228);
+            this.enemyMove3.Location = new System.Drawing.Point(517, 228);
             this.enemyMove3.Name = "enemyMove3";
             this.enemyMove3.ReadOnly = true;
-            this.enemyMove3.Size = new System.Drawing.Size(100, 20);
+            this.enemyMove3.Size = new System.Drawing.Size(188, 20);
             this.enemyMove3.TabIndex = 10;
             this.enemyMove3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // enemyMove2
             // 
             this.enemyMove2.Enabled = false;
-            this.enemyMove2.Location = new System.Drawing.Point(534, 202);
+            this.enemyMove2.Location = new System.Drawing.Point(517, 202);
             this.enemyMove2.Name = "enemyMove2";
             this.enemyMove2.ReadOnly = true;
-            this.enemyMove2.Size = new System.Drawing.Size(100, 20);
+            this.enemyMove2.Size = new System.Drawing.Size(188, 20);
             this.enemyMove2.TabIndex = 9;
             this.enemyMove2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // enemyMove1
             // 
             this.enemyMove1.Enabled = false;
-            this.enemyMove1.Location = new System.Drawing.Point(534, 176);
+            this.enemyMove1.Location = new System.Drawing.Point(517, 176);
             this.enemyMove1.Name = "enemyMove1";
             this.enemyMove1.ReadOnly = true;
-            this.enemyMove1.Size = new System.Drawing.Size(100, 20);
+            this.enemyMove1.Size = new System.Drawing.Size(188, 20);
             this.enemyMove1.TabIndex = 8;
             this.enemyMove1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // playerButtonMove2
             // 
-            this.playerButtonMove2.Location = new System.Drawing.Point(118, 200);
+            this.playerButtonMove2.Location = new System.Drawing.Point(206, 199);
             this.playerButtonMove2.Name = "playerButtonMove2";
-            this.playerButtonMove2.Size = new System.Drawing.Size(82, 23);
+            this.playerButtonMove2.Size = new System.Drawing.Size(100, 23);
             this.playerButtonMove2.TabIndex = 12;
             this.playerButtonMove2.Text = "button2";
             this.playerButtonMove2.UseVisualStyleBackColor = true;
             // 
             // playerButtonMove3
             // 
-            this.playerButtonMove3.Location = new System.Drawing.Point(118, 225);
+            this.playerButtonMove3.Location = new System.Drawing.Point(206, 225);
             this.playerButtonMove3.Name = "playerButtonMove3";
-            this.playerButtonMove3.Size = new System.Drawing.Size(82, 23);
+            this.playerButtonMove3.Size = new System.Drawing.Size(100, 23);
             this.playerButtonMove3.TabIndex = 13;
             this.playerButtonMove3.Text = "button3";
             this.playerButtonMove3.UseVisualStyleBackColor = true;
@@ -183,20 +183,24 @@
             this.playerHealthBar.Location = new System.Drawing.Point(12, 147);
             this.playerHealthBar.Name = "playerHealthBar";
             this.playerHealthBar.Size = new System.Drawing.Size(188, 23);
+            this.playerHealthBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.playerHealthBar.TabIndex = 14;
+            this.playerHealthBar.Value = 100;
             // 
             // enemyHealthBar
             // 
-            this.enemyHealthBar.Location = new System.Drawing.Point(446, 147);
+            this.enemyHealthBar.Location = new System.Drawing.Point(517, 147);
             this.enemyHealthBar.Name = "enemyHealthBar";
             this.enemyHealthBar.Size = new System.Drawing.Size(188, 23);
+            this.enemyHealthBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.enemyHealthBar.TabIndex = 15;
+            this.enemyHealthBar.Value = 100;
             // 
             // playerButtonMove4
             // 
-            this.playerButtonMove4.Location = new System.Drawing.Point(118, 251);
+            this.playerButtonMove4.Location = new System.Drawing.Point(206, 251);
             this.playerButtonMove4.Name = "playerButtonMove4";
-            this.playerButtonMove4.Size = new System.Drawing.Size(82, 23);
+            this.playerButtonMove4.Size = new System.Drawing.Size(100, 23);
             this.playerButtonMove4.TabIndex = 16;
             this.playerButtonMove4.Text = "button4";
             this.playerButtonMove4.UseVisualStyleBackColor = true;
@@ -204,7 +208,7 @@
             // enemyStats
             // 
             this.enemyStats.Enabled = false;
-            this.enemyStats.Location = new System.Drawing.Point(340, 12);
+            this.enemyStats.Location = new System.Drawing.Point(411, 12);
             this.enemyStats.Multiline = true;
             this.enemyStats.Name = "enemyStats";
             this.enemyStats.ReadOnly = true;
@@ -225,7 +229,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(646, 300);
+            this.ClientSize = new System.Drawing.Size(717, 360);
             this.Controls.Add(this.playerStats);
             this.Controls.Add(this.enemyStats);
             this.Controls.Add(this.playerButtonMove4);
@@ -244,6 +248,7 @@
             this.Controls.Add(this.playerButtonMove1);
             this.Controls.Add(this.enemySprite);
             this.Controls.Add(this.playerSprite);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.playerSprite)).EndInit();
