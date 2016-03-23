@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 using BennyBroseph;
 
@@ -23,45 +22,45 @@ namespace Combat
 
         public List<Ability<T>> abilities { get { return m_Abilities; } } 
 
-        public T health
+        public virtual T health
         {
             get { return m_Stats.health; }
             set { m_Stats.health = value; Publisher.self.Broadcast("Unit Health Changed", this); }
         }
-        public T maxHealth
+        public virtual T maxHealth
         {
             get { return m_Stats.maxHealth; }
             set { m_Stats.maxHealth = value; Publisher.self.Broadcast("Unit MaxHealth Changed", this); }
         }
 
-        public StatType<T> attack
+        public virtual StatType<T> attack
         {
             get { return m_Stats.attack; }
             set { m_Stats.attack = value; Publisher.self.Broadcast("Unit Attack Changed", this); }
         }
-        public StatType<T> maxAttack
+        public virtual StatType<T> maxAttack
         {
             get { return m_Stats.maxAttack; }
             set { m_Stats.maxAttack = value; Publisher.self.Broadcast("Unit MaxAttack Changed", this); }
         }
 
-        public StatType<T> defense
+        public virtual StatType<T> defense
         {
             get { return m_Stats.defense; }
             set { m_Stats.defense = value; Publisher.self.Broadcast("Unit Defense Changed", this); }
         }
-        public StatType<T> maxDefense
+        public virtual StatType<T> maxDefense
         {
             get { return m_Stats.maxDefense; }
             set { m_Stats.maxDefense = value; Publisher.self.Broadcast("Unit MaxDefense Changed", this); }
         }
 
-        public T speed
+        public virtual T speed
         {
             get { return m_Stats.speed; }
             set { m_Stats.speed = value; Publisher.self.Broadcast("Unit Speed Changed", this); }
         }   
-        public T maxSpeed
+        public virtual T maxSpeed
         {
             get { return m_Stats.maxSpeed; }
             set { m_Stats.maxSpeed = value; Publisher.self.Broadcast("Unit MaxSpeed Changed", this); }

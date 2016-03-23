@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abilities.cs" />
+    <Compile Include="Combat\Player.cs" />
     <Compile Include="FiniteStateMachine.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

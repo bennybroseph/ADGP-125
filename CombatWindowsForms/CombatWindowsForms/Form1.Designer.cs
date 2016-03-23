@@ -47,6 +47,18 @@
             this.playerButtonMove4 = new System.Windows.Forms.Button();
             this.enemyStats = new System.Windows.Forms.TextBox();
             this.playerStats = new System.Windows.Forms.TextBox();
+            this.playerUnitIndicator1 = new System.Windows.Forms.RadioButton();
+            this.playerUnitIndicator2 = new System.Windows.Forms.RadioButton();
+            this.playerUnitIndicator3 = new System.Windows.Forms.RadioButton();
+            this.playerUnitIndicator4 = new System.Windows.Forms.RadioButton();
+            this.playerUnitIndicator5 = new System.Windows.Forms.RadioButton();
+            this.playerUnitIndicator6 = new System.Windows.Forms.RadioButton();
+            this.enemyUnitIndicator6 = new System.Windows.Forms.RadioButton();
+            this.enemyUnitIndicator5 = new System.Windows.Forms.RadioButton();
+            this.enemyUnitIndicator4 = new System.Windows.Forms.RadioButton();
+            this.enemyUnitIndicator3 = new System.Windows.Forms.RadioButton();
+            this.enemyUnitIndicator2 = new System.Windows.Forms.RadioButton();
+            this.enemyUnitIndicator1 = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.playerSprite)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.enemySprite)).BeginInit();
             this.SuspendLayout();
@@ -54,7 +66,7 @@
             // playerSprite
             // 
             this.playerSprite.Image = ((System.Drawing.Image)(resources.GetObject("playerSprite.Image")));
-            this.playerSprite.Location = new System.Drawing.Point(12, 12);
+            this.playerSprite.Location = new System.Drawing.Point(12, 32);
             this.playerSprite.Name = "playerSprite";
             this.playerSprite.Size = new System.Drawing.Size(188, 129);
             this.playerSprite.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -64,7 +76,7 @@
             // enemySprite
             // 
             this.enemySprite.Image = ((System.Drawing.Image)(resources.GetObject("enemySprite.Image")));
-            this.enemySprite.Location = new System.Drawing.Point(517, 12);
+            this.enemySprite.Location = new System.Drawing.Point(517, 32);
             this.enemySprite.Name = "enemySprite";
             this.enemySprite.Size = new System.Drawing.Size(188, 129);
             this.enemySprite.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -73,17 +85,18 @@
             // 
             // playerButtonMove1
             // 
-            this.playerButtonMove1.Location = new System.Drawing.Point(206, 173);
+            this.playerButtonMove1.Location = new System.Drawing.Point(206, 193);
             this.playerButtonMove1.Name = "playerButtonMove1";
             this.playerButtonMove1.Size = new System.Drawing.Size(100, 23);
             this.playerButtonMove1.TabIndex = 2;
-            this.playerButtonMove1.Text = "button1";
+            this.playerButtonMove1.Text = "\r\n\r\n";
             this.playerButtonMove1.UseVisualStyleBackColor = true;
+            this.playerButtonMove1.Click += new System.EventHandler(this.playerButtonMove1_Click);
             // 
             // playerMove1
             // 
             this.playerMove1.Enabled = false;
-            this.playerMove1.Location = new System.Drawing.Point(12, 176);
+            this.playerMove1.Location = new System.Drawing.Point(12, 196);
             this.playerMove1.Name = "playerMove1";
             this.playerMove1.ReadOnly = true;
             this.playerMove1.Size = new System.Drawing.Size(188, 20);
@@ -93,7 +106,7 @@
             // playerMove2
             // 
             this.playerMove2.Enabled = false;
-            this.playerMove2.Location = new System.Drawing.Point(12, 202);
+            this.playerMove2.Location = new System.Drawing.Point(12, 222);
             this.playerMove2.Name = "playerMove2";
             this.playerMove2.ReadOnly = true;
             this.playerMove2.Size = new System.Drawing.Size(188, 20);
@@ -103,7 +116,7 @@
             // playerMove3
             // 
             this.playerMove3.Enabled = false;
-            this.playerMove3.Location = new System.Drawing.Point(12, 228);
+            this.playerMove3.Location = new System.Drawing.Point(12, 248);
             this.playerMove3.Name = "playerMove3";
             this.playerMove3.ReadOnly = true;
             this.playerMove3.Size = new System.Drawing.Size(188, 20);
@@ -113,7 +126,7 @@
             // playerMove4
             // 
             this.playerMove4.Enabled = false;
-            this.playerMove4.Location = new System.Drawing.Point(12, 254);
+            this.playerMove4.Location = new System.Drawing.Point(12, 274);
             this.playerMove4.Name = "playerMove4";
             this.playerMove4.ReadOnly = true;
             this.playerMove4.Size = new System.Drawing.Size(188, 20);
@@ -123,7 +136,7 @@
             // enemyMove4
             // 
             this.enemyMove4.Enabled = false;
-            this.enemyMove4.Location = new System.Drawing.Point(517, 254);
+            this.enemyMove4.Location = new System.Drawing.Point(517, 274);
             this.enemyMove4.Name = "enemyMove4";
             this.enemyMove4.ReadOnly = true;
             this.enemyMove4.Size = new System.Drawing.Size(188, 20);
@@ -133,7 +146,7 @@
             // enemyMove3
             // 
             this.enemyMove3.Enabled = false;
-            this.enemyMove3.Location = new System.Drawing.Point(517, 228);
+            this.enemyMove3.Location = new System.Drawing.Point(517, 248);
             this.enemyMove3.Name = "enemyMove3";
             this.enemyMove3.ReadOnly = true;
             this.enemyMove3.Size = new System.Drawing.Size(188, 20);
@@ -143,7 +156,7 @@
             // enemyMove2
             // 
             this.enemyMove2.Enabled = false;
-            this.enemyMove2.Location = new System.Drawing.Point(517, 202);
+            this.enemyMove2.Location = new System.Drawing.Point(517, 222);
             this.enemyMove2.Name = "enemyMove2";
             this.enemyMove2.ReadOnly = true;
             this.enemyMove2.Size = new System.Drawing.Size(188, 20);
@@ -153,7 +166,7 @@
             // enemyMove1
             // 
             this.enemyMove1.Enabled = false;
-            this.enemyMove1.Location = new System.Drawing.Point(517, 176);
+            this.enemyMove1.Location = new System.Drawing.Point(517, 196);
             this.enemyMove1.Name = "enemyMove1";
             this.enemyMove1.ReadOnly = true;
             this.enemyMove1.Size = new System.Drawing.Size(188, 20);
@@ -162,25 +175,26 @@
             // 
             // playerButtonMove2
             // 
-            this.playerButtonMove2.Location = new System.Drawing.Point(206, 199);
+            this.playerButtonMove2.Location = new System.Drawing.Point(206, 219);
             this.playerButtonMove2.Name = "playerButtonMove2";
             this.playerButtonMove2.Size = new System.Drawing.Size(100, 23);
             this.playerButtonMove2.TabIndex = 12;
-            this.playerButtonMove2.Text = "button2";
+            this.playerButtonMove2.Text = "\r\n\r\n";
             this.playerButtonMove2.UseVisualStyleBackColor = true;
+            this.playerButtonMove2.Click += new System.EventHandler(this.playerButtonMove2_Click);
             // 
             // playerButtonMove3
             // 
-            this.playerButtonMove3.Location = new System.Drawing.Point(206, 225);
+            this.playerButtonMove3.Location = new System.Drawing.Point(206, 245);
             this.playerButtonMove3.Name = "playerButtonMove3";
             this.playerButtonMove3.Size = new System.Drawing.Size(100, 23);
             this.playerButtonMove3.TabIndex = 13;
-            this.playerButtonMove3.Text = "button3";
+            this.playerButtonMove3.Text = "\r\n\r\n";
             this.playerButtonMove3.UseVisualStyleBackColor = true;
             // 
             // playerHealthBar
             // 
-            this.playerHealthBar.Location = new System.Drawing.Point(12, 147);
+            this.playerHealthBar.Location = new System.Drawing.Point(12, 167);
             this.playerHealthBar.Name = "playerHealthBar";
             this.playerHealthBar.Size = new System.Drawing.Size(188, 23);
             this.playerHealthBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
@@ -189,7 +203,7 @@
             // 
             // enemyHealthBar
             // 
-            this.enemyHealthBar.Location = new System.Drawing.Point(517, 147);
+            this.enemyHealthBar.Location = new System.Drawing.Point(517, 167);
             this.enemyHealthBar.Name = "enemyHealthBar";
             this.enemyHealthBar.Size = new System.Drawing.Size(188, 23);
             this.enemyHealthBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
@@ -198,17 +212,17 @@
             // 
             // playerButtonMove4
             // 
-            this.playerButtonMove4.Location = new System.Drawing.Point(206, 251);
+            this.playerButtonMove4.Location = new System.Drawing.Point(206, 271);
             this.playerButtonMove4.Name = "playerButtonMove4";
             this.playerButtonMove4.Size = new System.Drawing.Size(100, 23);
             this.playerButtonMove4.TabIndex = 16;
-            this.playerButtonMove4.Text = "button4";
+            this.playerButtonMove4.Text = "\r\n\r\n";
             this.playerButtonMove4.UseVisualStyleBackColor = true;
             // 
             // enemyStats
             // 
             this.enemyStats.Enabled = false;
-            this.enemyStats.Location = new System.Drawing.Point(411, 12);
+            this.enemyStats.Location = new System.Drawing.Point(411, 32);
             this.enemyStats.Multiline = true;
             this.enemyStats.Name = "enemyStats";
             this.enemyStats.ReadOnly = true;
@@ -218,18 +232,162 @@
             // playerStats
             // 
             this.playerStats.Enabled = false;
-            this.playerStats.Location = new System.Drawing.Point(206, 12);
+            this.playerStats.Location = new System.Drawing.Point(206, 32);
             this.playerStats.Multiline = true;
             this.playerStats.Name = "playerStats";
             this.playerStats.ReadOnly = true;
             this.playerStats.Size = new System.Drawing.Size(100, 129);
             this.playerStats.TabIndex = 19;
             // 
+            // playerUnitIndicator1
+            // 
+            this.playerUnitIndicator1.AutoSize = true;
+            this.playerUnitIndicator1.Enabled = false;
+            this.playerUnitIndicator1.Location = new System.Drawing.Point(12, 12);
+            this.playerUnitIndicator1.Name = "playerUnitIndicator1";
+            this.playerUnitIndicator1.Size = new System.Drawing.Size(14, 13);
+            this.playerUnitIndicator1.TabIndex = 20;
+            this.playerUnitIndicator1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.playerUnitIndicator1.UseVisualStyleBackColor = true;
+            // 
+            // playerUnitIndicator2
+            // 
+            this.playerUnitIndicator2.AutoSize = true;
+            this.playerUnitIndicator2.Enabled = false;
+            this.playerUnitIndicator2.Location = new System.Drawing.Point(43, 12);
+            this.playerUnitIndicator2.Name = "playerUnitIndicator2";
+            this.playerUnitIndicator2.Size = new System.Drawing.Size(14, 13);
+            this.playerUnitIndicator2.TabIndex = 21;
+            this.playerUnitIndicator2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.playerUnitIndicator2.UseVisualStyleBackColor = true;
+            // 
+            // playerUnitIndicator3
+            // 
+            this.playerUnitIndicator3.AutoSize = true;
+            this.playerUnitIndicator3.Enabled = false;
+            this.playerUnitIndicator3.Location = new System.Drawing.Point(80, 12);
+            this.playerUnitIndicator3.Name = "playerUnitIndicator3";
+            this.playerUnitIndicator3.Size = new System.Drawing.Size(14, 13);
+            this.playerUnitIndicator3.TabIndex = 22;
+            this.playerUnitIndicator3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.playerUnitIndicator3.UseVisualStyleBackColor = true;
+            // 
+            // playerUnitIndicator4
+            // 
+            this.playerUnitIndicator4.AutoSize = true;
+            this.playerUnitIndicator4.Enabled = false;
+            this.playerUnitIndicator4.Location = new System.Drawing.Point(117, 12);
+            this.playerUnitIndicator4.Name = "playerUnitIndicator4";
+            this.playerUnitIndicator4.Size = new System.Drawing.Size(14, 13);
+            this.playerUnitIndicator4.TabIndex = 23;
+            this.playerUnitIndicator4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.playerUnitIndicator4.UseVisualStyleBackColor = true;
+            // 
+            // playerUnitIndicator5
+            // 
+            this.playerUnitIndicator5.AutoSize = true;
+            this.playerUnitIndicator5.Enabled = false;
+            this.playerUnitIndicator5.Location = new System.Drawing.Point(154, 12);
+            this.playerUnitIndicator5.Name = "playerUnitIndicator5";
+            this.playerUnitIndicator5.Size = new System.Drawing.Size(14, 13);
+            this.playerUnitIndicator5.TabIndex = 24;
+            this.playerUnitIndicator5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.playerUnitIndicator5.UseVisualStyleBackColor = true;
+            // 
+            // playerUnitIndicator6
+            // 
+            this.playerUnitIndicator6.AutoSize = true;
+            this.playerUnitIndicator6.Enabled = false;
+            this.playerUnitIndicator6.Location = new System.Drawing.Point(186, 12);
+            this.playerUnitIndicator6.Name = "playerUnitIndicator6";
+            this.playerUnitIndicator6.Size = new System.Drawing.Size(14, 13);
+            this.playerUnitIndicator6.TabIndex = 25;
+            this.playerUnitIndicator6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.playerUnitIndicator6.UseVisualStyleBackColor = true;
+            // 
+            // enemyUnitIndicator6
+            // 
+            this.enemyUnitIndicator6.AutoSize = true;
+            this.enemyUnitIndicator6.Enabled = false;
+            this.enemyUnitIndicator6.Location = new System.Drawing.Point(691, 12);
+            this.enemyUnitIndicator6.Name = "enemyUnitIndicator6";
+            this.enemyUnitIndicator6.Size = new System.Drawing.Size(14, 13);
+            this.enemyUnitIndicator6.TabIndex = 31;
+            this.enemyUnitIndicator6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.enemyUnitIndicator6.UseVisualStyleBackColor = true;
+            // 
+            // enemyUnitIndicator5
+            // 
+            this.enemyUnitIndicator5.AutoSize = true;
+            this.enemyUnitIndicator5.Enabled = false;
+            this.enemyUnitIndicator5.Location = new System.Drawing.Point(659, 12);
+            this.enemyUnitIndicator5.Name = "enemyUnitIndicator5";
+            this.enemyUnitIndicator5.Size = new System.Drawing.Size(14, 13);
+            this.enemyUnitIndicator5.TabIndex = 30;
+            this.enemyUnitIndicator5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.enemyUnitIndicator5.UseVisualStyleBackColor = true;
+            // 
+            // enemyUnitIndicator4
+            // 
+            this.enemyUnitIndicator4.AutoSize = true;
+            this.enemyUnitIndicator4.Enabled = false;
+            this.enemyUnitIndicator4.Location = new System.Drawing.Point(622, 12);
+            this.enemyUnitIndicator4.Name = "enemyUnitIndicator4";
+            this.enemyUnitIndicator4.Size = new System.Drawing.Size(14, 13);
+            this.enemyUnitIndicator4.TabIndex = 29;
+            this.enemyUnitIndicator4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.enemyUnitIndicator4.UseVisualStyleBackColor = true;
+            // 
+            // enemyUnitIndicator3
+            // 
+            this.enemyUnitIndicator3.AutoSize = true;
+            this.enemyUnitIndicator3.Enabled = false;
+            this.enemyUnitIndicator3.Location = new System.Drawing.Point(585, 12);
+            this.enemyUnitIndicator3.Name = "enemyUnitIndicator3";
+            this.enemyUnitIndicator3.Size = new System.Drawing.Size(14, 13);
+            this.enemyUnitIndicator3.TabIndex = 28;
+            this.enemyUnitIndicator3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.enemyUnitIndicator3.UseVisualStyleBackColor = true;
+            // 
+            // enemyUnitIndicator2
+            // 
+            this.enemyUnitIndicator2.AutoSize = true;
+            this.enemyUnitIndicator2.Enabled = false;
+            this.enemyUnitIndicator2.Location = new System.Drawing.Point(548, 12);
+            this.enemyUnitIndicator2.Name = "enemyUnitIndicator2";
+            this.enemyUnitIndicator2.Size = new System.Drawing.Size(14, 13);
+            this.enemyUnitIndicator2.TabIndex = 27;
+            this.enemyUnitIndicator2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.enemyUnitIndicator2.UseVisualStyleBackColor = true;
+            // 
+            // enemyUnitIndicator1
+            // 
+            this.enemyUnitIndicator1.AutoSize = true;
+            this.enemyUnitIndicator1.Enabled = false;
+            this.enemyUnitIndicator1.Location = new System.Drawing.Point(517, 12);
+            this.enemyUnitIndicator1.Name = "enemyUnitIndicator1";
+            this.enemyUnitIndicator1.Size = new System.Drawing.Size(14, 13);
+            this.enemyUnitIndicator1.TabIndex = 26;
+            this.enemyUnitIndicator1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.enemyUnitIndicator1.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(717, 360);
+            this.ClientSize = new System.Drawing.Size(717, 346);
+            this.Controls.Add(this.enemyUnitIndicator6);
+            this.Controls.Add(this.enemyUnitIndicator5);
+            this.Controls.Add(this.enemyUnitIndicator4);
+            this.Controls.Add(this.enemyUnitIndicator3);
+            this.Controls.Add(this.enemyUnitIndicator2);
+            this.Controls.Add(this.enemyUnitIndicator1);
+            this.Controls.Add(this.playerUnitIndicator6);
+            this.Controls.Add(this.playerUnitIndicator5);
+            this.Controls.Add(this.playerUnitIndicator4);
+            this.Controls.Add(this.playerUnitIndicator3);
+            this.Controls.Add(this.playerUnitIndicator2);
+            this.Controls.Add(this.playerUnitIndicator1);
             this.Controls.Add(this.playerStats);
             this.Controls.Add(this.enemyStats);
             this.Controls.Add(this.playerButtonMove4);
@@ -251,6 +409,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.playerSprite)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.enemySprite)).EndInit();
             this.ResumeLayout(false);
@@ -278,6 +437,18 @@
         private System.Windows.Forms.Button playerButtonMove4;
         private System.Windows.Forms.TextBox enemyStats;
         private System.Windows.Forms.TextBox playerStats;
+        private System.Windows.Forms.RadioButton playerUnitIndicator1;
+        private System.Windows.Forms.RadioButton playerUnitIndicator2;
+        private System.Windows.Forms.RadioButton playerUnitIndicator3;
+        private System.Windows.Forms.RadioButton playerUnitIndicator4;
+        private System.Windows.Forms.RadioButton playerUnitIndicator5;
+        private System.Windows.Forms.RadioButton playerUnitIndicator6;
+        private System.Windows.Forms.RadioButton enemyUnitIndicator6;
+        private System.Windows.Forms.RadioButton enemyUnitIndicator5;
+        private System.Windows.Forms.RadioButton enemyUnitIndicator4;
+        private System.Windows.Forms.RadioButton enemyUnitIndicator3;
+        private System.Windows.Forms.RadioButton enemyUnitIndicator2;
+        private System.Windows.Forms.RadioButton enemyUnitIndicator1;
     }
 }
 

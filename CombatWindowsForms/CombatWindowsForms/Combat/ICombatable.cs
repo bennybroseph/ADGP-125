@@ -36,7 +36,7 @@ namespace Combat
         BUFF,
         DEBUFF,
     }
-
+    
     public struct Ability<T>
     {
         private string m_Name;
@@ -51,7 +51,7 @@ namespace Combat
         private T m_Uses;
         private T m_MaxUses;
 
-        public delegate void Action(ref List<List<ICombatable<float>>> a_Parties, ref ICombatable<float> a_Target, ref ICombatable<float> a_Self);
+        public delegate void Action(ref List<List<Unit<float>>> a_Parties, ref ICombatable<float> a_Target, ref ICombatable<float> a_Self, ref Ability<float> a_Ability);
 
         private Action m_Action;
 
@@ -63,7 +63,7 @@ namespace Combat
         public List<T> power { get { return m_Power; } }
         public List<T> accuracy { get { return m_Accuracy; } }
 
-        public T uses { get { return m_Uses; } set { m_Uses = value; } }
+        public T uses { get { return m_Uses; } set { m_Uses = value; BennyBroseph.Publisher.self.Broadcast("Ability Uses Changed", this); } }
         public T maxUses { get { return m_MaxUses; } }
 
         public Action action { get { return m_Action; } }
@@ -83,6 +83,23 @@ namespace Combat
             m_MaxUses = m_Uses;
 
             m_Action = a_Action;
+        }
+
+        public Ability(Ability<T> a_Reference)
+        {
+            m_Name = a_Reference.m_Name;
+            m_Description = a_Reference.m_Description;
+
+            m_Type = a_Reference.m_Type;
+            m_Recipient = a_Reference.m_Recipient;
+
+            m_Power = a_Reference.m_Power;
+            m_Accuracy = a_Reference.m_Accuracy;
+
+            m_Uses = a_Reference.m_Uses;
+            m_MaxUses = a_Reference.m_MaxUses;
+
+            m_Action = a_Reference.m_Action;
         }
     }
 
