@@ -51,7 +51,7 @@ namespace Combat
         private T m_Uses;
         private T m_MaxUses;
 
-        public delegate void Action(ref List<List<Unit<float>>> a_Parties, ref ICombatable<float> a_Target, ref ICombatable<float> a_Self, ref Ability<float> a_Ability);
+        public delegate void Action(int a_AbilityIndex);
 
         private Action m_Action;
 
@@ -120,6 +120,8 @@ namespace Combat
 
     public struct Stats<T>
     {
+        
+
         private T m_Health;
         private T m_MaxHealth;
 

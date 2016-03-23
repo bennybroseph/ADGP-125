@@ -15,12 +15,36 @@ namespace Combat
 
     public class Unit<T> : ICombatable<T>
     {
+        protected string m_Name;
+        protected string m_Nickname;
+
+        protected int m_Level;
+        protected int m_Experience;
+
         protected List<Ability<T>> m_Abilities;
         protected Stats<T> m_Stats;
 
         protected FiniteStateMachine<UnitStates> m_UnitFSM;
 
-        public List<Ability<T>> abilities { get { return m_Abilities; } } 
+        public virtual string name { get { return m_Name; } }
+        public virtual string nickname
+        {
+            get { return m_Nickname; }
+            set { m_Nickname = value; Publisher.self.Broadcast("Unit Nickname Changed", this); }
+        }
+
+        public virtual int level { get { return m_Level; } }
+        public virtual int experience
+        {
+            get { return m_Experience; }
+            set { m_Experience = value; Publisher.self.Broadcast("Unit Experience Changed", this); }
+        }
+
+        public virtual List<Ability<T>> abilities
+        {
+            get { return m_Abilities; }
+            set { m_Abilities = value; }
+        }
 
         public virtual T health
         {
@@ -59,17 +83,20 @@ namespace Combat
         {
             get { return m_Stats.speed; }
             set { m_Stats.speed = value; Publisher.self.Broadcast("Unit Speed Changed", this); }
-        }   
+        }
         public virtual T maxSpeed
         {
             get { return m_Stats.maxSpeed; }
             set { m_Stats.maxSpeed = value; Publisher.self.Broadcast("Unit MaxSpeed Changed", this); }
-        }   
+        }
 
         protected Unit() { }    // No default constructor available
 
-        public Unit(Stats<T> a_Stats, List<Ability<T>> a_Actions)
+        public Unit(string a_Name, string a_Nickname, Stats<T> a_Stats, List<Ability<T>> a_Actions)
         {
+            m_Name = a_Name;
+            m_Nickname = a_Nickname;
+
             m_Stats = a_Stats;
             m_Abilities = a_Actions;
         }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 
@@ -29,37 +28,44 @@ namespace CombatWindowsForms
             InputManager.self.AddOnKeyDown(OnKeyDown);
 
             Controller.self.Save();
-            //Controller.self.Load();
+            Controller.self.Load();
 
             Publisher.self.Subscribe("Unit Health Changed", UnitHealthChanged);
             Publisher.self.Subscribe("Ability Uses Changed", AbilityUsesChanged);
 
+            AttatchUI();
+        }
+
+        private void AttatchUI()
+        {
+            playerName.Text = m_Player.party.currentUnit.name + "  '" + m_Player.party.currentUnit.nickname + "'";
+
             try
             {
-                playerButtonMove1.Text = m_Player.party[0].abilities[0].name;
-                playerButtonMove2.Text = m_Player.party[0].abilities[1].name;
-                playerButtonMove3.Text = m_Player.party[0].abilities[2].name;
-                playerButtonMove4.Text = m_Player.party[0].abilities[3].name;
+                playerButtonMove1.Text = m_Player.party.currentUnit.abilities[0].name;
+                playerButtonMove2.Text = m_Player.party.currentUnit.abilities[1].name;
+                playerButtonMove3.Text = m_Player.party.currentUnit.abilities[2].name;
+                playerButtonMove4.Text = m_Player.party.currentUnit.abilities[3].name;
             }
             catch { }
             try
             {
-                playerMove1.Text = m_Player.party[0].abilities[0].uses.ToString() + "/" + m_Player.party[0].abilities[0].maxUses.ToString();
-                playerMove2.Text = m_Player.party[0].abilities[1].uses.ToString() + "/" + m_Player.party[0].abilities[1].maxUses.ToString();
-                playerMove3.Text = m_Player.party[0].abilities[2].uses.ToString() + "/" + m_Player.party[0].abilities[2].maxUses.ToString();
-                playerMove4.Text = m_Player.party[0].abilities[3].uses.ToString() + "/" + m_Player.party[0].abilities[3].maxUses.ToString();
+                playerMove1.Text = m_Player.party.currentUnit.abilities[0].uses.ToString() + "/" + m_Player.party.currentUnit.abilities[0].maxUses.ToString();
+                playerMove2.Text = m_Player.party.currentUnit.abilities[1].uses.ToString() + "/" + m_Player.party.currentUnit.abilities[1].maxUses.ToString();
+                playerMove3.Text = m_Player.party.currentUnit.abilities[2].uses.ToString() + "/" + m_Player.party.currentUnit.abilities[2].maxUses.ToString();
+                playerMove4.Text = m_Player.party.currentUnit.abilities[3].uses.ToString() + "/" + m_Player.party.currentUnit.abilities[3].maxUses.ToString();
             }
             catch { }
             try
             {
                 ToolTip ToolTip1 = new ToolTip();
-                ToolTip1.SetToolTip(playerButtonMove1, m_Player.party[0].abilities[0].description);
+                ToolTip1.SetToolTip(playerButtonMove1, m_Player.party.currentUnit.abilities[0].description);
                 ToolTip ToolTip2 = new ToolTip();
-                ToolTip2.SetToolTip(playerButtonMove2, m_Player.party[0].abilities[1].description);
+                ToolTip2.SetToolTip(playerButtonMove2, m_Player.party.currentUnit.abilities[1].description);
                 ToolTip ToolTip3 = new ToolTip();
-                ToolTip3.SetToolTip(playerButtonMove3, m_Player.party[0].abilities[2].description);
+                ToolTip3.SetToolTip(playerButtonMove3, m_Player.party.currentUnit.abilities[2].description);
                 ToolTip ToolTip4 = new ToolTip();
-                ToolTip4.SetToolTip(playerButtonMove4, m_Player.party[0].abilities[3].description);
+                ToolTip4.SetToolTip(playerButtonMove4, m_Player.party.currentUnit.abilities[3].description);
             }
             catch { }
         }
@@ -85,10 +91,10 @@ namespace CombatWindowsForms
         {
             Ability<float> BroadcastAbility = (Ability<float>)a_Param;
 
-            if (BroadcastAbility.GetHashCode() == m_Player.party[0].abilities[0].GetHashCode())
+            if (BroadcastAbility.GetHashCode() == m_Player.party.currentUnit.abilities[0].GetHashCode())
                 playerMove1.Text = BroadcastAbility.uses.ToString() + "/" + BroadcastAbility.maxUses.ToString();
 
-            if (BroadcastAbility.GetHashCode() == m_Player.party[0].abilities[1].GetHashCode())
+            if (BroadcastAbility.GetHashCode() == m_Player.party.currentUnit.abilities[1].GetHashCode())
                 playerMove2.Text = BroadcastAbility.uses.ToString() + "/" + BroadcastAbility.maxUses.ToString();
         }
 
@@ -99,34 +105,11 @@ namespace CombatWindowsForms
 
         private void playerButtonMove1_Click(object sender, EventArgs e)
         {
-            Publisher.self.Broadcast("Unit Action", m_Player);
-
-            var Parties = Controller.self.parties;
-            var Ability = m_Player.party[0].abilities[0];
-            var Player = (ICombatable<float>)m_Player.party[0];
-
-            
-            //passes in the list of parties in combat the target, the attacker, the ability that is being used
-            //call ability 1 specifically for the first partymember of the player
-            m_Player.party[0].abilities[0].action(ref Parties, ref Player, ref Player, ref Ability);
-
-            Controller.self.parties = Parties;
-            m_Player.party[0].abilities[0] = Ability;
-            m_Player.party[0] = (Unit<float>)Player;
+            Publisher.self.Broadcast("Player Used Ability", 0);
         }  
         private void playerButtonMove2_Click(object sender, EventArgs e)
         {
-            Publisher.self.Broadcast("Unit Action", m_Player);
-
-            var Parties = Controller.self.parties;
-            var Ability = m_Player.party[0].abilities[1];
-            var Player = (ICombatable<float>)m_Player.party[0];
-
-            m_Player.party[0].abilities[0].action(ref Parties, ref Player, ref Player, ref Ability);
-
-            Controller.self.parties = Parties;
-            m_Player.party[0].abilities[1] = Ability;
-            m_Player.party[0] = (Unit<float>)Player;
+            Publisher.self.Broadcast("Player Used Ability", 1);
         }
 
         private void Form1_Load(object sender, EventArgs e)

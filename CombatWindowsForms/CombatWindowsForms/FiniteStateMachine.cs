@@ -23,7 +23,7 @@ namespace BennyBroseph
 
         // Read-Only property for the current state 'm_CurrentState'
         // Look at me. I'm the captain now.
-        public T CurrentState { get { return m_CurrentState; } }
+        public T currentState { get { return m_CurrentState; } }
 
         /// <summary>
         /// Default constructor which will initialize the list and dictionary
