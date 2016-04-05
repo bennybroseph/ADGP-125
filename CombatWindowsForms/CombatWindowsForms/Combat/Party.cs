@@ -17,20 +17,28 @@ namespace Combat
     }
 
     [Serializable]
-    public struct Party<T>
+    public class Party<T>
     {
+        private string m_Name;
+
         private List<Unit<T>> m_Units;
         private int m_CurrentUnitIndex;
 
         private FiniteStateMachine<PartyState> m_PartyFSM;
+
+        public string name { get { return m_Name; } set { m_Name = value; } }
 
         public List<Unit<T>> units { get { return m_Units; } set { m_Units = value; } }
         public Unit<T> currentUnit { get { return m_Units[m_CurrentUnitIndex]; } set { m_Units[m_CurrentUnitIndex] = value; Publisher.self.Broadcast("Party Current Unit Changed", this); } }
 
         public FiniteStateMachine<PartyState> partyFSM { get { return m_PartyFSM; } }
 
-        public Party(List<Unit<T>> a_Units)
+        private Party() { }
+
+        public Party(string a_Name, List<Unit<T>> a_Units)
         {
+            m_Name = a_Name;
+
             m_Units = a_Units;
             m_CurrentUnitIndex = 0;
 
@@ -38,8 +46,10 @@ namespace Combat
             SetFMS();
         }
 
-        public Party(List<Unit<T>> a_Units, int a_UnitIndex)
+        public Party(string a_Name, List<Unit<T>> a_Units, int a_UnitIndex)
         {
+            m_Name = a_Name;
+
             m_Units = a_Units;
             m_CurrentUnitIndex = a_UnitIndex;
 
@@ -47,23 +57,53 @@ namespace Combat
             SetFMS();
         }
 
+        public void SwitchCurrentUnit(int a_NewUnitIndex)
+        {
+            if (m_Units.Count > a_NewUnitIndex)
+            {
+                m_CurrentUnitIndex = a_NewUnitIndex;
+
+                Publisher.self.Broadcast("Party Current Unit Switched", this);
+            }
+        }
+
+        public void AutoSwitchCurrentUnit()
+        {
+            if (m_Units.Count > m_CurrentUnitIndex + 1)
+                SwitchCurrentUnit(m_CurrentUnitIndex + 1);
+            else
+                Publisher.self.Broadcast("Party Out of Combatable Units", this);
+        }
         private void SetFMS()
         {
             m_PartyFSM.AddTransition(PartyState.INIT, PartyState.IDLE);
             m_PartyFSM.AddTransition(PartyState.IDLE, PartyState.TAKING_TURN);
+            m_PartyFSM.AddTransition(PartyState.TAKING_TURN, PartyState.IDLE);
+            m_PartyFSM.AddTransition(PartyState.TAKING_TURN, PartyState.DEFEATED);
             m_PartyFSM.AddTransition(PartyState.IDLE, PartyState.DEFEATED);
 
             m_PartyFSM.Transition(PartyState.IDLE);
         }
     }
 
+    public enum GameControllerState
+    {
+        INIT,
+        IDLE,
+        PLAYER_TURN,
+        ENEMY_TURN,
+        END,
+    }
+
     [Serializable]
-    public sealed class Controller : Singleton<Controller>
+    public sealed class GameController : Singleton<GameController>
     {
         private List<Party<float>> m_Parties;
 
-        private int m_CurrentPartyIndex;
-        private int m_CurrentTargetPartyIndex;
+        private FiniteStateMachine<GameControllerState> m_GameControllerFSM;
+
+        private int m_CurrentPartyIndex = 0;
+        private int m_CurrentTargetPartyIndex = 1;
 
         private string m_Path = Environment.CurrentDirectory + "\\SaveFile.xml";
 
@@ -75,7 +115,7 @@ namespace Combat
 
         public Party<float> currentParty
         {
-            get { return m_Parties[m_CurrentPartyIndex]; }
+            get { return m_Parties[m_CurrentPartyIndex];  }
             set { m_Parties[m_CurrentPartyIndex] = value; Publisher.self.Broadcast("Current Party Changed", m_Parties[m_CurrentPartyIndex]); }
         }
         public Party<float> currentTargetParty
@@ -84,11 +124,17 @@ namespace Combat
             set { m_Parties[m_CurrentTargetPartyIndex] = value; Publisher.self.Broadcast("Current Target Party Changed", m_Parties[m_CurrentTargetPartyIndex]); }
         }
 
-        public Controller()
+        public GameController()
         {
             m_Parties = new List<Party<float>>();
 
+            m_GameControllerFSM = new FiniteStateMachine<GameControllerState>();
+            SetFSM();
+
             Publisher.self.Subscribe("Unit Action", EventRaised);
+            Publisher.self.Subscribe("Player End Turn", UnitEndTurn);
+            Publisher.self.Subscribe("Enemy End Turn", UnitEndTurn);
+            Publisher.self.Subscribe("Party Out of Combatable Units", PartyWiped);
         }
 
         public void Save()
@@ -106,7 +152,7 @@ namespace Combat
 
             StreamReader SaveFile = new StreamReader(m_Path);
 
-            Controller Me = Reader.Deserialize(SaveFile) as Controller;
+            GameController Me = Reader.Deserialize(SaveFile) as GameController;
 
             m_Parties = Me.m_Parties;
 
@@ -121,6 +167,55 @@ namespace Combat
         private void EventRaised(string a_Message, object a_Param)
         {
             Console.WriteLine(a_Message + ": " + a_Param.ToString());
+        }
+
+        private void UnitEndTurn(string a_Message, object a_Param)
+        {
+            if (a_Message == "Player End Turn")
+            {
+                if (m_GameControllerFSM.Transition(GameControllerState.ENEMY_TURN))
+                {
+                    var TempIndex = m_CurrentPartyIndex;
+                    m_CurrentPartyIndex = m_CurrentTargetPartyIndex;
+                    m_CurrentTargetPartyIndex = TempIndex;
+
+                    Publisher.self.Broadcast("Enemy Turn", null);
+                }
+            }
+            if (a_Message == "Enemy End Turn")
+            {
+                if (m_GameControllerFSM.Transition(GameControllerState.PLAYER_TURN))
+                {
+                    var TempIndex = m_CurrentPartyIndex;
+                    m_CurrentPartyIndex = m_CurrentTargetPartyIndex;
+                    m_CurrentTargetPartyIndex = TempIndex;
+
+                    Publisher.self.Broadcast("Player Turn", null);
+                }
+            }
+        }
+
+        private void PartyWiped(string a_Message, object a_Param)
+        {
+            Party<float> BroadcastParty = a_Param as Party<float>;
+
+            m_GameControllerFSM.Transition(GameControllerState.END);
+            Console.WriteLine(BroadcastParty.name + " has been wiped out!");
+        }
+
+        private void SetFSM()
+        {
+            m_GameControllerFSM.AddTransition(GameControllerState.INIT, GameControllerState.IDLE);
+            m_GameControllerFSM.AddTransition(GameControllerState.IDLE, GameControllerState.PLAYER_TURN);
+            m_GameControllerFSM.AddTransition(GameControllerState.PLAYER_TURN, GameControllerState.ENEMY_TURN);
+            m_GameControllerFSM.AddTransition(GameControllerState.ENEMY_TURN, GameControllerState.PLAYER_TURN);
+            m_GameControllerFSM.AddTransition(GameControllerState.PLAYER_TURN, GameControllerState.END);
+            m_GameControllerFSM.AddTransition(GameControllerState.ENEMY_TURN, GameControllerState.END);
+
+            m_GameControllerFSM.Transition(GameControllerState.IDLE);
+            m_GameControllerFSM.Transition(GameControllerState.PLAYER_TURN);
+
+            Publisher.self.Broadcast("Player Turn", null);
         }
     }
 }

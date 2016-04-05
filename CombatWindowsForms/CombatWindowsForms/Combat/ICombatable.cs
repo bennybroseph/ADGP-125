@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using BennyBroseph;
+
 namespace Combat
 {
     public struct StatType<T>
@@ -37,7 +39,8 @@ namespace Combat
         DEBUFF,
     }
     
-    public struct Ability<T>
+    [Serializable]
+    public class Ability<T>
     {
         private string m_Name;
         private string m_Description;
@@ -63,10 +66,12 @@ namespace Combat
         public List<T> power { get { return m_Power; } }
         public List<T> accuracy { get { return m_Accuracy; } }
 
-        public T uses { get { return m_Uses; } set { m_Uses = value; BennyBroseph.Publisher.self.Broadcast("Ability Uses Changed", this); } }
+        public T uses { get { return m_Uses; } set { m_Uses = value; Publisher.self.Broadcast("Ability Uses Changed", this); } }
         public T maxUses { get { return m_MaxUses; } }
 
         public Action action { get { return m_Action; } }
+
+        private Ability() { }
 
         public Ability(string a_Name, string a_Description, List<AbilityType> a_Type, List<Recipient> a_Recipient, List<T> a_Power, List<T> a_Accuracy, T a_Uses, Action a_Action)
         {
