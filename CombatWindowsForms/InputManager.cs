@@ -613,43 +613,43 @@ namespace BennyBroseph
             //     ///
             //     Numeric keypad '.'.
             //     ///
-            Period = 266,
+            NumPeriod = 266,
             //
             // Summary:
             //     ///
             //     Numeric keypad '/'.
             //     ///
-            Divide = 267,
+            NumDivide = 267,
             //
             // Summary:
             //     ///
             //     Numeric keypad '*'.
             //     ///
-            Multiply = 268,
+            NumMultiply = 268,
             //
             // Summary:
             //     ///
             //     Numeric keypad '-'.
             //     ///
-            Minus = 269,
+            NumMinus = 269,
             //
             // Summary:
             //     ///
             //     Numeric keypad '+'.
             //     ///
-            Plus = 270,
+            NumPlus = 270,
             //
             // Summary:
             //     ///
             //     Numeric keypad enter.
             //     ///
-            Enter = 271,
+            NumEnter = 271,
             //
             // Summary:
             //     ///
             //     Numeric keypad '='.
             //     ///
-            Equals = 272,
+            NumEquals = 272,
             //
             // Summary:
             //     ///

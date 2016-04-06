@@ -141,7 +141,7 @@ namespace BennyBroseph
         public void PrintStates()
         {
             for (var i = 0; i < m_States.Count; ++i)
-                Console.WriteLine(i + " - " + m_States[i].ToString());
+                DebugMessage(i + " - " + m_States[i].ToString());
         }
         /// <summary>
         /// Prints the currently defined transitions int the format:
@@ -152,7 +152,7 @@ namespace BennyBroseph
             var i = 0;
             foreach (var iPair in m_Transitions)
             {
-                Console.WriteLine(i + " - " + iPair.Key.ToString());
+                DebugMessage(i + " - " + iPair.Key.ToString());
                 i++;
             }
         }

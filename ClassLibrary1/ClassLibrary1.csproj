@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{15E1281B-C1E1-4B41-B411-B104547E6A0E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ClassLibrary1</RootNamespace>
+    <AssemblyName>ClassLibrary1</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\Assets\CombatLibrary\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;UNITY_EDITOR; CONTEXT_DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\Assets\CombatLibrary\.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UnityEngine">
+      <HintPath>..\Library\UnityAssemblies\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityScript" />
+    <Reference Include="UnityScript.Lang" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\CombatWindowsForms\Abilities.cs">
+      <Link>Abilities.cs</Link>
+    </Compile>
+    <Compile Include="..\CombatWindowsForms\Combat\ICombatable.cs">
+      <Link>ICombatable.cs</Link>
+    </Compile>
+    <Compile Include="..\CombatWindowsForms\Combat\Party.cs">
+      <Link>Party.cs</Link>
+    </Compile>
+    <Compile Include="..\CombatWindowsForms\Combat\Player.cs">
+      <Link>Player.cs</Link>
+    </Compile>
+    <Compile Include="..\CombatWindowsForms\Combat\Unit.cs">
+      <Link>Unit.cs</Link>
+    </Compile>
+    <Compile Include="..\CombatWindowsForms\Debug.cs">
+      <Link>Debug.cs</Link>
+    </Compile>
+    <Compile Include="..\CombatWindowsForms\Enemy.cs">
+      <Link>Enemy.cs</Link>
+    </Compile>
+    <Compile Include="..\CombatWindowsForms\FiniteStateMachine.cs">
+      <Link>FiniteStateMachine.cs</Link>
+    </Compile>
+    <Compile Include="..\CombatWindowsForms\Publisher.cs">
+      <Link>Publisher.cs</Link>
+    </Compile>
+    <Compile Include="..\CombatWindowsForms\Singleton.cs">
+      <Link>Singleton.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

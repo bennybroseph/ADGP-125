@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ClassLibrary1</name>
+    </assembly>
+    <members>
+        <member name="T:BennyBroseph.FiniteStateMachine`1">
+            <summary>
+            My Finite State Machine
+            </summary>
+            <typeparam name="T">A 'System.Type' in which 'T.IsEnum()' is true</typeparam>
+        </member>
+        <member name="M:BennyBroseph.FiniteStateMachine`1.#ctor">
+            <summary>
+            Default constructor which will initialize the list and dictionary
+            </summary>
+        </member>
+        <member name="M:BennyBroseph.FiniteStateMachine`1.#ctor(`0)">
+            <summary>
+            Parameterized constructor which allows a state other than 'm_States[0]' to initialize 'm_CurrentState'
+            </summary>
+            <param name="a_InitialState">Used as the current state 'm_CurrentState' on creation</param>
+        </member>
+        <member name="M:BennyBroseph.FiniteStateMachine`1.AddTransition(`0,`0,BennyBroseph.FiniteStateMachine{`0}.ValidateTransition)">
+            <summary>
+            Attempts to add a new transition to the current list of transitions
+            </summary>
+            <param name="a_From">The state to come from</param>
+            <param name="a_To">The state to go to</param>
+            <param name="a_IsValidTransition">An optional delegate with no parameters that returns true when the state change is valid and false when it is not</param>
+            <returns>Returns true if the transition was able to be added and false otherwise</returns>
+        </member>
+        <member name="M:BennyBroseph.FiniteStateMachine`1.Transition(`0)">
+            <summary>
+            Attempts to transition from the current state to the passed parameter
+            </summary>
+            <param name="a_To">The state to transition to</param>
+            <returns>Returns true if the transition completed and false otherwise</returns>
+        </member>
+        <member name="M:BennyBroseph.FiniteStateMachine`1.StoreStates">
+            <summary>
+            Grabs each state from the type of enumeration and caches it into a list
+            </summary>
+            <returns>Returns true if the type is an enumeration and false if it is not</returns>
+        </member>
+        <member name="M:BennyBroseph.FiniteStateMachine`1.PrintStates">
+            <summary>
+            Prints the cached states in the format:
+            ORDER - STATE
+            </summary>
+        </member>
+        <member name="M:BennyBroseph.FiniteStateMachine`1.PrintTransitions">
+            <summary>
+            Prints the currently defined transitions int the format:
+            ORDER - STATE_FROM->STATE_TO
+            </summary>
+        </member>
+        <member name="M:BennyBroseph.FiniteStateMachine`1.DebugMessage(System.Object)">
+            <summary>
+            Attempts to access a debugging messenger. Will do nothing if it cannot be found
+            </summary>
+            <param name="a_Type">The string representing the type of message to display</param>
+            <param name="a_Message">The message to display</param>
+        </member>
+        <member name="M:BennyBroseph.FiniteStateMachine`1.DebugWarning(System.Object)">
+            <summary>
+            Attempts to access a debugging messenger at a warning level. Will do nothing if it cannot be found
+            </summary>
+            <param name="a_Type">The string representing the type of message to display</param>
+            <param name="a_Message">The message to display</param>
+        </member>
+        <member name="M:BennyBroseph.FiniteStateMachine`1.DebugError(System.Object)">
+            <summary>
+            Attempts to access a debugging messenger at an error level. Will do nothing if it cannot be found
+            </summary>
+            <param name="a_Type">The string representing the type of message to display</param>
+            <param name="a_Message">The message to display</param>
+        </member>
+        <member name="M:BennyBroseph.Publisher.DebugMessage(System.Object)">
+            <summary>
+            Attempts to access a debugging messenger. Will do nothing if it cannot be found
+            </summary>
+            <param name="a_Type">The string representing the type of message to display</param>
+            <param name="a_Message">The message to display</param>
+        </member>
+        <member name="M:BennyBroseph.Publisher.DebugWarning(System.Object)">
+            <summary>
+            Attempts to access a debugging messenger at a warning level. Will do nothing if it cannot be found
+            </summary>
+            <param name="a_Type">The string representing the type of message to display</param>
+            <param name="a_Message">The message to display</param>
+        </member>
+        <member name="M:BennyBroseph.Publisher.DebugError(System.Object)">
+            <summary>
+            Attempts to access a debugging messenger at an error level. Will do nothing if it cannot be found
+            </summary>
+            <param name="a_Type">The string representing the type of message to display</param>
+            <param name="a_Message">The message to display</param>
+        </member>
+    </members>
+</doc>

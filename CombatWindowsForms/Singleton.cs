@@ -9,7 +9,7 @@ namespace BennyBroseph
     {
         [System.Serializable]
 #if UNITY_EDITOR
-        public class Singleton<T> : MonoBehavior
+        public class Singleton<T> : UnityEngine.MonoBehaviour where T : UnityEngine.MonoBehaviour
 #else
         public abstract class Singleton<T> where T : class, new()
 #endif
