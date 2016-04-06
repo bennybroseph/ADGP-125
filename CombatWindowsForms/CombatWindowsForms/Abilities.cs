@@ -64,6 +64,32 @@ namespace Combat
 
                 GameController.self.currentParty.currentUnit.abilities[a_AbilityIndex].uses--;
             });
+        static public Ability<float> s_FlameWheel = new Ability<float>(
+            "Flame-wheel",
+            "Covers the user in flames before executing a burning tackle",
+            new List<AbilityType>()
+            {
+                AbilityType.OFFENSIVE,
+            },
+            new List<Recipient>()
+            {
+                Recipient.TARGET,
+            },
+            new List<float>()
+            {
+                75.0f,
+            },
+            new List<float>()
+            {
+                100.0f,
+            },
+            15.0f,
+            delegate (int a_AbilityIndex)
+            {
+                GameController.self.currentTargetParty.currentUnit.health -= s_FlameWheel.power[0];
+
+                GameController.self.currentParty.currentUnit.abilities[a_AbilityIndex].uses--;
+            });
         static public Ability<float> s_Surf = new Ability<float>(
             "Surf",
             "Heavy waves crash into the enemy at high speed",
@@ -90,9 +116,9 @@ namespace Combat
 
                 GameController.self.currentParty.currentUnit.abilities[a_AbilityIndex].uses--;
             });
-        static public Ability<float> s_FlameWheel = new Ability<float>(
-            "Flame-wheel",
-            "Covers the user in flames before executing a burning tackle",
+        static public Ability<float> s_WaterGun = new Ability<float>(
+            "Water Gun",
+            "Throws water towards the target at high speeds",
             new List<AbilityType>()
             {
                 AbilityType.OFFENSIVE,
@@ -103,16 +129,16 @@ namespace Combat
             },
             new List<float>()
             {
-                75.0f,
+                50.0f,
             },
             new List<float>()
             {
                 100.0f,
             },
-            15.0f,
+            25.0f,
             delegate (int a_AbilityIndex)
             {
-                GameController.self.currentTargetParty.currentUnit.health -= s_FlameWheel.power[0];
+                GameController.self.currentTargetParty.currentUnit.health -= s_WaterGun.power[0];
 
                 GameController.self.currentParty.currentUnit.abilities[a_AbilityIndex].uses--;
             });

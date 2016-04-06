@@ -8,6 +8,7 @@ using BennyBroseph;
 
 namespace Combat
 {
+    [Serializable]
     public struct StatType<T>
     {
         private T m_Physical, m_Special;
@@ -123,10 +124,9 @@ namespace Combat
         T maxSpeed { get; set; }
     }
 
+    [Serializable]
     public struct Stats<T>
-    {
-        
-
+    {      
         private T m_Health;
         private T m_MaxHealth;
 

@@ -30,10 +30,7 @@ namespace CombatWindowsForms
 
             InputManager.self.Init(this);
             InputManager.self.AddOnKeyDown(OnKeyDown);
-
-            GameController.self.ToString();
-            GameController.self.Save();
-            //GameController.self.Load();            
+           
 
             Publisher.self.Subscribe("Unit Health Changed", UnitHealthChanged);
             Publisher.self.Subscribe("Ability Uses Changed", AbilityUsesChanged);
@@ -112,6 +109,17 @@ namespace CombatWindowsForms
             {
                 Console.WriteLine(e.Message);
             }
+
+            try
+            {
+                playerSprite.Image = new System.Drawing.Bitmap(m_Player.party.currentUnit.imagePath + "_Mirror.gif");
+            }
+            catch { }
+            try
+            {
+                enemySprite.Image = new System.Drawing.Bitmap(m_Enemy.party.currentUnit.imagePath + ".gif");
+            }
+            catch { }
         }
 
         private void UnitHealthChanged(string a_Message, object a_Param)
@@ -170,10 +178,23 @@ namespace CombatWindowsForms
         {
             Publisher.self.Broadcast("Player Used Ability", 1);
         }
-
-        private void Form1_Load(object sender, EventArgs e)
+        private void playerButtonMove3_Click(object sender, EventArgs e)
         {
+            Publisher.self.Broadcast("Player Used Ability", 2);
+        }
+        private void playerButtonMove4_Click(object sender, EventArgs e)
+        {
+            Publisher.self.Broadcast("Player Used Ability", 3);
+        }
 
+        private void loadButton_Click(object sender, EventArgs e)
+        {
+            GameController.self.Load();
+            BuildUI(null, null);
+        }
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            GameController.self.Save();
         }
     }
 }

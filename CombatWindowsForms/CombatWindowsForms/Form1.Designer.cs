@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.playerSprite = new System.Windows.Forms.PictureBox();
             this.enemySprite = new System.Windows.Forms.PictureBox();
             this.playerButtonMove1 = new System.Windows.Forms.Button();
@@ -61,13 +60,14 @@
             this.enemyUnitIndicator1 = new System.Windows.Forms.RadioButton();
             this.playerName = new System.Windows.Forms.TextBox();
             this.enemyName = new System.Windows.Forms.TextBox();
+            this.saveButton = new System.Windows.Forms.Button();
+            this.loadButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.playerSprite)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.enemySprite)).BeginInit();
             this.SuspendLayout();
             // 
             // playerSprite
             // 
-            this.playerSprite.Image = ((System.Drawing.Image)(resources.GetObject("playerSprite.Image")));
             this.playerSprite.Location = new System.Drawing.Point(12, 57);
             this.playerSprite.Name = "playerSprite";
             this.playerSprite.Size = new System.Drawing.Size(188, 129);
@@ -77,7 +77,6 @@
             // 
             // enemySprite
             // 
-            this.enemySprite.Image = ((System.Drawing.Image)(resources.GetObject("enemySprite.Image")));
             this.enemySprite.Location = new System.Drawing.Point(517, 57);
             this.enemySprite.Name = "enemySprite";
             this.enemySprite.Size = new System.Drawing.Size(188, 129);
@@ -193,6 +192,7 @@
             this.playerButtonMove3.TabIndex = 13;
             this.playerButtonMove3.Text = "\r\n\r\n";
             this.playerButtonMove3.UseVisualStyleBackColor = true;
+            this.playerButtonMove3.Click += new System.EventHandler(this.playerButtonMove3_Click);
             // 
             // playerHealthBar
             // 
@@ -220,6 +220,7 @@
             this.playerButtonMove4.TabIndex = 16;
             this.playerButtonMove4.Text = "\r\n\r\n";
             this.playerButtonMove4.UseVisualStyleBackColor = true;
+            this.playerButtonMove4.Click += new System.EventHandler(this.playerButtonMove4_Click);
             // 
             // enemyStats
             // 
@@ -393,11 +394,33 @@
             this.enemyName.TabIndex = 33;
             this.enemyName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // saveButton
+            // 
+            this.saveButton.Location = new System.Drawing.Point(206, 339);
+            this.saveButton.Name = "saveButton";
+            this.saveButton.Size = new System.Drawing.Size(100, 23);
+            this.saveButton.TabIndex = 34;
+            this.saveButton.Text = "Save";
+            this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
+            // 
+            // loadButton
+            // 
+            this.loadButton.Location = new System.Drawing.Point(411, 339);
+            this.loadButton.Name = "loadButton";
+            this.loadButton.Size = new System.Drawing.Size(100, 23);
+            this.loadButton.TabIndex = 35;
+            this.loadButton.Text = "Load";
+            this.loadButton.UseVisualStyleBackColor = true;
+            this.loadButton.Click += new System.EventHandler(this.loadButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(717, 330);
+            this.ClientSize = new System.Drawing.Size(717, 374);
+            this.Controls.Add(this.loadButton);
+            this.Controls.Add(this.saveButton);
             this.Controls.Add(this.enemyName);
             this.Controls.Add(this.playerName);
             this.Controls.Add(this.enemyUnitIndicator6);
@@ -433,7 +456,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.playerSprite)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.enemySprite)).EndInit();
             this.ResumeLayout(false);
@@ -475,6 +497,8 @@
         private System.Windows.Forms.RadioButton enemyUnitIndicator1;
         private System.Windows.Forms.TextBox playerName;
         private System.Windows.Forms.TextBox enemyName;
+        private System.Windows.Forms.Button saveButton;
+        private System.Windows.Forms.Button loadButton;
     }
 }
 

@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 using BennyBroseph;
 
 namespace Combat
 {
+    [Serializable]
     public class Enemy
     {
         private Party<float> m_Party;
@@ -27,14 +29,22 @@ namespace Combat
                         }),
                      new Unit<float>(
                         "Feraligatr",
-                        "Alex",
+                        "Crunch",
+                        new Stats<float>(180, 50, new StatType<float>(30, 50), new StatType<float>(50, 20)),
+                        new List<Ability<float>>()
+                        {
+                            new Ability<float>(Abilities.s_Slash),
+                            new Ability<float>(Abilities.s_WaterGun),
+                        }),
+                     new Unit<float>(
+                        "Meganium",
+                        "Jenny",
                         new Stats<float>(180, 50, new StatType<float>(30, 50), new StatType<float>(50, 20)),
                         new List<Ability<float>>()
                         {
                             new Ability<float>(Abilities.s_Slash),
                         }),
                 });  
-
             Publisher.self.Subscribe("Enemy Turn", UseAbility);
             Publisher.self.Subscribe("Unit Health Changed", UnitHealthChanged);
 
@@ -60,7 +70,12 @@ namespace Combat
             if (BroadcastUnit.GetHashCode() == m_Party.currentUnit.GetHashCode())
             {
                 if (BroadcastUnit.health < 0)
+                {
                     m_Party.currentUnit.health = 0;
+
+                    Publisher.self.Broadcast("Unit Died", m_Party.currentUnit);
+                    m_Party.AutoSwitchCurrentUnit();
+                }
             }
         }
     }

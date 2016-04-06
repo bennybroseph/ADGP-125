@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 using BennyBroseph;
 
@@ -13,10 +14,13 @@ namespace Combat
         DEAD,
     }
 
+    [Serializable]
     public class Unit<T> : ICombatable<T>
     {
         protected string m_Name;
         protected string m_Nickname;
+
+        protected string m_ImagePath;
 
         protected int m_Level;
         protected int m_Experience;
@@ -32,6 +36,8 @@ namespace Combat
             get { return m_Nickname; }
             set { m_Nickname = value; Publisher.self.Broadcast("Unit Nickname Changed", this); }
         }
+
+        public virtual string imagePath { get { return m_ImagePath; } }
 
         public virtual int level { get { return m_Level; } }
         public virtual int experience
@@ -96,6 +102,8 @@ namespace Combat
         {
             m_Name = a_Name;
             m_Nickname = a_Nickname;
+
+            m_ImagePath = Environment.CurrentDirectory + "\\Images\\" + m_Name;
 
             m_Stats = a_Stats;
             m_Abilities = a_Actions;

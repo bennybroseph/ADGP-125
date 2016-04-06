@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 using BennyBroseph;
 
 namespace Combat
 {
+    [Serializable]
     public class Player
     {
         private Party<float> m_Party;
@@ -18,7 +20,7 @@ namespace Combat
                 {
                     new Unit<float>(
                         "Charizard",
-                        "Smokey",
+                        "Smokey",                       
                         new Stats<float>(210, 45, new StatType<float>(50, 30), new StatType<float>(50, 20)),
                         new List<Ability<float>>()
                         {
@@ -28,6 +30,16 @@ namespace Combat
                      new Unit<float>(
                         "Blastoise",
                         "Roy",
+                        new Stats<float>(180, 50, new StatType<float>(30, 50), new StatType<float>(50, 20)),
+                        new List<Ability<float>>()
+                        {
+                            new Ability<float>(Abilities.s_Slash),
+                            new Ability<float>(Abilities.s_Surf),
+                            new Ability<float>(Abilities.s_WaterGun),
+                        }),
+                     new Unit<float>(
+                        "Venusaur",
+                        "Alan",
                         new Stats<float>(180, 50, new StatType<float>(30, 50), new StatType<float>(50, 20)),
                         new List<Ability<float>>()
                         {
@@ -53,10 +65,14 @@ namespace Combat
 
             if (m_Party.partyFSM.currentState == PartyState.TAKING_TURN)
             {
-                m_Party.currentUnit.abilities[BroadcastIndex].action(BroadcastIndex);
-                m_Party.partyFSM.Transition(PartyState.IDLE);
+                try
+                {
+                    m_Party.currentUnit.abilities[BroadcastIndex].action(BroadcastIndex);
+                    m_Party.partyFSM.Transition(PartyState.IDLE);
 
-                Publisher.self.Broadcast("Player End Turn", null);
+                    Publisher.self.Broadcast("Player End Turn", null);
+                }
+                catch { }
             }
         }
 

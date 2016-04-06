@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Xml.Serialization;
+using System.Runtime.Serialization;
 
 using BennyBroseph;
 using BennyBroseph.Contextual;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Combat
 {
@@ -105,7 +107,7 @@ namespace Combat
         private int m_CurrentPartyIndex = 0;
         private int m_CurrentTargetPartyIndex = 1;
 
-        private string m_Path = Environment.CurrentDirectory + "\\SaveFile.xml";
+        private string m_SavePath = Environment.CurrentDirectory + "\\SaveFile";
 
         public List<Party<float>> parties
         {
@@ -115,7 +117,7 @@ namespace Combat
 
         public Party<float> currentParty
         {
-            get { return m_Parties[m_CurrentPartyIndex];  }
+            get { return m_Parties[m_CurrentPartyIndex]; }
             set { m_Parties[m_CurrentPartyIndex] = value; Publisher.self.Broadcast("Current Party Changed", m_Parties[m_CurrentPartyIndex]); }
         }
         public Party<float> currentTargetParty
@@ -139,22 +141,40 @@ namespace Combat
 
         public void Save()
         {
-            FileStream SaveFile = File.Create(m_Path);
+            FileStream SaveFile = File.Create(m_SavePath);
+            BinaryFormatter Formatter = new BinaryFormatter();
 
-            XmlSerializer Writer = new XmlSerializer(GetType());
-            Writer.Serialize(SaveFile, this);
+            try
+            {
+                Formatter.Serialize(SaveFile, this);
+            }
+            catch (SerializationException e)
+            {
+                Console.WriteLine("Failed to serialize: " + e.Message);
+            }
 
             SaveFile.Close();
         }
         public void Load()
         {
-            XmlSerializer Reader = new XmlSerializer(GetType());
+            FileStream SaveFile = File.Open(m_SavePath, FileMode.Open);
+            BinaryFormatter Formatter = new BinaryFormatter();
 
-            StreamReader SaveFile = new StreamReader(m_Path);
+            try
+            {
+                GameController DeserializedData = Formatter.Deserialize(SaveFile) as GameController;
 
-            GameController Me = Reader.Deserialize(SaveFile) as GameController;
+                m_Parties = DeserializedData.m_Parties;
 
-            m_Parties = Me.m_Parties;
+                m_CurrentPartyIndex = DeserializedData.m_CurrentPartyIndex;
+                m_CurrentTargetPartyIndex = DeserializedData.m_CurrentTargetPartyIndex;
+
+                m_GameControllerFSM = DeserializedData.m_GameControllerFSM;
+            }
+            catch (SerializationException e)
+            {
+                Console.WriteLine("Failed to serialize: " + e.Message);
+            }
 
             SaveFile.Close();
         }

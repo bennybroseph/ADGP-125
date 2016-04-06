@@ -4,9 +4,10 @@
 
 
 namespace BennyBroseph
-{
+{    
     namespace Contextual
     {
+        [System.Serializable]
 #if UNITY_EDITOR
         public class Singleton<T> : MonoBehavior
 #else
